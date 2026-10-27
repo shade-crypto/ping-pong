@@ -41,7 +41,8 @@ def receive():
 font_win = font.Font(None, 72)
 font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
-
+backimg = image.load('фон.avif')
+backimg = transform.scale(backimg,(WIDTH,HEIGHT))
 # --- ЗВУКИ ---
 
 # --- ГРА ---
@@ -88,7 +89,9 @@ while True:
         continue  # Блокує гру після перемоги
 
     if game_state:
-        screen.fill((30, 30, 30))
+
+        #screen.fill((30, 30, 30))
+        screen.blit(backimg,(0,0))
         draw.rect(screen, (0, 255, 0), (20, game_state['paddles']['0'], 20, 100))
         draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
         draw.circle(screen, (255, 255, 255), (game_state['ball']['x'], game_state['ball']['y']), 10)
